@@ -1,0 +1,60 @@
+@import 'variables';
+
+.searchHistory {
+  background-color: $background-color;
+  border-radius: 15px;
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: $primary-color;
+    font-weight: $font-weight-medium;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  li {
+    background: linear-gradient(135deg, $primary-color, $secondary-color);
+    color: $text-color;
+    padding: 0.8rem 1.2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: $font-weight-regular;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+      transform: translateY(-1px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    li {
+      font-size: 0.8rem;
+      padding: 0.6rem 1rem;
+    }
+  }
+}

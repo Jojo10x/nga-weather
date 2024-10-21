@@ -1,0 +1,63 @@
+@import 'variables';
+
+.currentWeather {
+  background: linear-gradient(135deg, $primary-color, $secondary-color);
+  border-radius: 15px;
+  padding: 2rem;
+  color: $text-color;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: $highlight-color;
+    font-weight: $font-weight-medium;
+  }
+
+  .weatherInfo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+
+    .infoItem {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      .label {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+        font-weight: $font-weight-light;
+      }
+
+      .value {
+        font-size: 1.2rem;
+        font-weight: $font-weight-medium;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .weatherInfo {
+      grid-template-columns: 1fr;
+    }
+  }
+}
