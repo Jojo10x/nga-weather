@@ -11,9 +11,11 @@ const App: React.FC = () => {
   const [forecast, setForecast] = useState<ForecastData | null>(null);
   const [searchHistory, setSearchHistory] = useState<SearchHistoryItem[]>([]);
 
+  const apiUrl = "https://nga-server.onrender.com";
   const fetchHistory = async () => {
+   
     try {
-      const historyResponse = await fetch('/api/weather/history');
+      const historyResponse = await fetch(`${apiUrl}/api/weather/history`);
       if (!historyResponse.ok) {
         const errorText = await historyResponse.text();
         throw new Error(`Error fetching history: ${historyResponse.statusText} - ${errorText}`);
@@ -31,7 +33,7 @@ const App: React.FC = () => {
 
   const handleSearch = async (city: string, country: string) => {
     try {
-      const currentResponse = await fetch(`/api/weather/current?city=${city}&country=${country}`);
+      const currentResponse = await fetch(`${apiUrl}/api/weather/current?city=${city}&country=${country}`);
       if (!currentResponse.ok) {
         const errorText = await currentResponse.text();
         throw new Error(`Error fetching current weather: ${errorText}`);
@@ -40,7 +42,7 @@ const App: React.FC = () => {
       const currentData = await currentResponse.json(); 
       setCurrentWeather(currentData.data[0]);
   
-      const forecastResponse = await fetch(`/api/weather/forecast?city=${city}&country=${country}`);
+      const forecastResponse = await fetch(`${apiUrl}/api/weather/forecast?city=${city}&country=${country}`);
       if (!forecastResponse.ok) {
         const errorText = await forecastResponse.text();
         throw new Error(`Error fetching forecast: ${forecastResponse.statusText} - ${errorText}`);
@@ -49,7 +51,7 @@ const App: React.FC = () => {
       const forecastData = await forecastResponse.json(); 
       setForecast(forecastData.data);
   
-      await fetch('/api/weather/history', {
+      await fetch(`${apiUrl}/api/weather/history`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ city, country }),

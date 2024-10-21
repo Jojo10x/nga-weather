@@ -34,7 +34,7 @@ npm run dev
 Deployment
 The application is hosted on Render, providing a scalable and reliable environment for both the frontend and backend. MongoDB is used for managing persistent data such as user search history.
 
-Live site: https://weathernga.onrender.com
+Live site: https://nga-weather.onrender.com/
 
 Upcoming:
 User Authentication: Personalized settings and saved searches.
